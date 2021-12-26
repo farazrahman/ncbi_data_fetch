@@ -2,13 +2,6 @@
 
 #### This repository locates the First SARS-CoV-2- Omicron variant data in the NCBI's website, dowloads the Sequence Read Archive (SRA) data using NCBI's SRA toolkit and CLI commands to dowload the SRA data in fastq format and then uses a python script to parse the fastq file.
 
-## Table of contents
-1. [LOCATE THE DATA](#LOCATE THE DATA)
-2. [DOWNLOAD AND INSTALL THE SRA TOOLKIT](#DOWNLOAD AND INSTALL THE SRA TOOLKIT)
-3. [DOWNLOAD THE SRA DATA](#DOWNLOAD THE SRA DATA)
-4. [PARSE AND ANALYZE THE SRA DATA](#PARSE AND ANALYZE THE SRA DATA)
-5. [RUN FASTQC FOR QUALITY CHECK](#RUN FASTQC FOR QUALITY CHECK)
-
 
 
 #### 1. LOCATE THE DATA:
