@@ -23,13 +23,17 @@ class ParseFastq:
         # open and read all lines in the fastq file
         with open(self.input_file, 'r') as fastq_file:
             for lines in fastq_file:
-                self.read_lines.append(lines)
+                self.read_lines.append(lines.rstrip('\n'))
 
         # break into groups of 4
         for line in range(0, len(self.read_lines), 4):
             single_sequence = self.read_lines[line:line + 4]
-            self.sequence_list.append(single_sequence)
-        # print(self.sequence_list)
+            if single_sequence[0].startswith('@') and (len(single_sequence[1]) == len(single_sequence[3])):
+                self.sequence_list.append(single_sequence)
+            else:
+                print(f'sequence mismatch with id starts with {single_sequence[0][0]}, '
+                      f'read length {len(single_sequence[1])}, quality length {len(single_sequence[3])}')
+        print(self.sequence_list)
 
     def fastq_to_csv(self) -> pd.DataFrame:
         """
@@ -49,8 +53,8 @@ class ParseFastq:
 
         :return:
         """
-        sequence_dict = {k[0]: k[1:4] for k in self.sequence_list}
-        # print(sequence_dict)
+        sequence_dict = {k[0]: k[1:2]+k[3:] for k in self.sequence_list}
+        # print(list(sequence_dict.items())[0])
         return sequence_dict
 
     @staticmethod
@@ -65,14 +69,14 @@ class ParseFastq:
         print(f"The count of reads is {count_reads}")
 
     @staticmethod
-    def distribution_reads(seq_df):
+    def distribution_reads(seq_reads: pd.Series):
         """
         Function to determine the length of each read and making a histogram of read length.
 
-        :param seq_df: A sequence dataframe
+        :param seq_reads:
         :return: Outputs a distribution of read length
         """
-        dist = seq_df['seq_reads'].apply(len)
+        dist = seq_reads.apply(len)
         print(f"read_distribution {dist.describe()}")
         print("Histogram of read lengths")
         plt.hist(x=dist, bins=50, color='#0504aa', alpha=0.7, rwidth=0.85)
@@ -91,7 +95,7 @@ if __name__ == '__main__':
     # individual sequences so that the list can be used to perform various analytics operations.
     df = seq.fastq_to_csv()
     seq.count_reads(df)
-    seq.distribution_reads(df)
+    seq.distribution_reads(df['seq_reads'])
 
     print("**************")
     seq_dict = seq.fastq_to_dict()
