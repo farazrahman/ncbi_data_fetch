@@ -5,7 +5,7 @@
 
 #### Workflow:
 
-![NCBI Data Engineering Workflow.jpg](NCBI Data Engineering Workflow.jpg)
+![Workflow](https://github.com/farazrahman/ncbi_data_fetch/blob/main/NCBI%20Data%20Engineering%20Workflow.jpg)
 
 #### 1. LOCATE THE DATA:
 - Locate the data in NCBI website: First SARS-CoV-2- Omicron variant in Europe and note the SRR run id i.e. SRR17066006
