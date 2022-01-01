@@ -3,6 +3,9 @@
 #### This repository locates the First SARS-CoV-2- Omicron variant data in the NCBI's website, dowloads the Sequence Read Archive (SRA) data using NCBI's SRA toolkit and CLI commands to dowload the SRA data in fastq format and then uses a python script to parse the fastq file.
 
 
+#### Workflow:
+
+![Workflow](NCBI%20Data%20Engineering%20Workflow.jpg)
 
 #### 1. LOCATE THE DATA:
 - Locate the data in NCBI website: First SARS-CoV-2- Omicron variant in Europe and note the SRR run id i.e. SRR17066006
