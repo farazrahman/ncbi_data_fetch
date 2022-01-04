@@ -2,3 +2,4 @@ pandas
 Bio
 matplotlib
 scikit-learn
+seaborn
