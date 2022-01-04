@@ -33,7 +33,7 @@ class ParseFastq:
             else:
                 print(f'sequence mismatch with id starts with {single_sequence[0][0]}, '
                       f'read length {len(single_sequence[1])}, quality length {len(single_sequence[3])}')
-        print(self.sequence_list)
+        print(f"The count of reads is {len(self.sequence_list)}")
 
     def fastq_to_csv(self) -> pd.DataFrame:
         """
@@ -43,7 +43,7 @@ class ParseFastq:
         :return: sequence dataframe
         """
         sequence_df = pd.DataFrame(self.sequence_list, columns=['seq_id', 'seq_reads', 'id2', 'seq_quality'])
-        # print(sequence_df)
+        print(f"printing the first few rows of {sequence_df.head()}")
         return sequence_df
 
     def fastq_to_dict(self) -> Dict:
@@ -54,7 +54,7 @@ class ParseFastq:
         :return:
         """
         sequence_dict = {k[0]: k[1:2]+k[3:] for k in self.sequence_list}
-        # print(list(sequence_dict.items())[0])
+        print(f"printing the first element from sequence dictionary {list(sequence_dict.items())[0]}")
         return sequence_dict
 
     @staticmethod
