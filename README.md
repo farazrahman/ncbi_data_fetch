@@ -1,6 +1,5 @@
-A complete data engineering pipeline to fetch and parse data from NCBI for further use in analytics.
-
 # ncbi_data_fetch
+A complete data engineering pipeline to fetch and parse data from NCBI for further use in analytics.
 
 #### This repository locates the First SARS-CoV-2- Omicron variant data in the NCBI's website, dowloads the Sequence Read Archive (SRA) data using NCBI's SRA toolkit and CLI commands to dowload the SRA data in fastq format and then uses a python script to parse the fastq file.
 
